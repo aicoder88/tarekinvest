@@ -3,8 +3,11 @@ import { Building2, Bell } from 'lucide-react'
 import { Button } from './ui/button'
 import UserProfile from './user-profile'
 import { Badge } from './ui/badge'
+import { isSupabaseConfigured } from '../../supabase/server'
 
 export default function DashboardNavbar() {
+  const supabaseReady = isSupabaseConfigured()
+
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 flex justify-between items-center">
@@ -40,7 +43,7 @@ export default function DashboardNavbar() {
             </Badge>
           </Button>
           
-          <UserProfile />
+          {supabaseReady ? <UserProfile /> : null}
         </div>
       </div>
     </nav>

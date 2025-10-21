@@ -1,13 +1,21 @@
 import Link from 'next/link'
-import { createClient } from '../../supabase/server'
+import { createClient, isSupabaseConfigured } from '../../supabase/server'
 import { Button } from './ui/button'
 import { Building2 } from 'lucide-react'
 import UserProfile from './user-profile'
 
 export default async function Navbar() {
-  const supabase = createClient()
+  const supabaseReady = isSupabaseConfigured()
+  type SupabaseUser = Awaited<
+    ReturnType<ReturnType<typeof createClient>['auth']['getUser']>
+  >['data']['user']
+  let user: SupabaseUser | null = null
 
-  const { data: { user } } = await (await supabase).auth.getUser()
+  if (supabaseReady) {
+    const supabase = createClient()
+    const { data } = await supabase.auth.getUser()
+    user = data.user
+  }
 
 
   return (
