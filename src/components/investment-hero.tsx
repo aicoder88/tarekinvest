@@ -4,7 +4,19 @@ import Link from "next/link";
 
 export default function InvestmentHero() {
   return (
-    <section className="relative min-h-[700px] flex items-center overflow-hidden bg-gradient-to-br from-white to-gray-50">
+    <section className="relative min-h-[700px] flex items-center overflow-hidden bg-navy">
+      {/* Background Image with Overlay */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          backgroundImage: 'url(https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-navy/70" />
+      </div>
+
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
@@ -15,17 +27,17 @@ export default function InvestmentHero() {
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-navy mb-6 leading-tight">
-            Turn <span className="text-gold">$50K</span> Into{" "}
-            <span className="text-gold">$75K</span>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            Turn <span className="text-gold-soft">$50K</span> Into{" "}
+            <span className="text-gold-soft">$75K</span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-gold-soft">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-soft to-gold">
               in 6 Months
             </span>
           </h1>
 
           {/* Subheadline */}
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
             Join savvy investors earning 40-60% returns through Tarek's strategic real estate renovations. No experience needed.
           </p>
 
@@ -44,7 +56,7 @@ export default function InvestmentHero() {
             <Link href="#success-story">
               <Button
                 size="lg"
-                className="border-2 border-navy/20 text-navy hover:bg-navy/5 px-8 py-6 text-lg font-semibold rounded-xl"
+                className="border-2 border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-xl backdrop-blur-sm"
               >
                 View Success Stories
               </Button>
@@ -52,18 +64,18 @@ export default function InvestmentHero() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-navy/10">
+          <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">$12.5M+</div>
-              <div className="text-sm text-gray-600">Total Invested</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">$12.5M+</div>
+              <div className="text-sm text-gray-400">Total Invested</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">47%</div>
-              <div className="text-sm text-gray-600">Avg. ROI</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">47%</div>
+              <div className="text-sm text-gray-400">Avg. ROI</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">89</div>
-              <div className="text-sm text-gray-600">Successful Projects</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">89</div>
+              <div className="text-sm text-gray-400">Successful Projects</div>
             </div>
           </div>
         </div>
