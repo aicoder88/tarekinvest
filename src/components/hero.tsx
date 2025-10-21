@@ -23,21 +23,19 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/sign-up">
-                <button
-                  className="inline-flex items-center px-8 py-4 text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-lg hover:from-blue-700 hover:to-blue-800 hover:shadow-lg active:scale-95 transition-all duration-200 text-lg font-semibold shadow-md"
-                >
-                  Get Started Free
-                  <ArrowUpRight className="ml-2 w-5 h-5" />
-                </button>
+              <Link
+                href="/dashboard"
+                className="inline-flex items-center px-8 py-4 text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors text-lg font-medium"
+              >
+                Get Started Free
+                <ArrowUpRight className="ml-2 w-5 h-5" />
               </Link>
 
-              <Link href="#pricing">
-                <button
-                  className="inline-flex items-center px-8 py-4 text-gray-900 bg-gray-100 rounded-lg hover:bg-gray-200 hover:shadow-md active:scale-95 transition-all duration-200 text-lg font-semibold border border-gray-300 hover:border-gray-400"
-                >
-                  View Pricing
-                </button>
+              <Link
+                href="#pricing"
+                className="inline-flex items-center px-8 py-4 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors text-lg font-medium"
+              >
+                View Pricing
               </Link>
             </div>
 

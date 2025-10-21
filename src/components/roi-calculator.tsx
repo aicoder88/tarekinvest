@@ -35,7 +35,7 @@ export default function ROICalculator() {
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Calculator Input */}
-            <Card className="p-8 border-2 shadow-elevated hover-scale">
+            <Card className="p-8 border-2 shadow-xl">
               <div className="mb-6">
                 <Label htmlFor="investment" className="text-lg font-semibold text-navy mb-2 block">
                   Your Investment Amount
