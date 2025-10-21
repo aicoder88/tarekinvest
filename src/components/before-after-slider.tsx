@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { Slider } from "./ui/slider";
+import { useState, useRef } from "react";
 import { Card } from "./ui/card";
 
 interface BeforeAfterSliderProps {
@@ -15,7 +14,25 @@ export default function BeforeAfterSlider({
   afterImage = "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
   title = "Complete Renovation"
 }: BeforeAfterSliderProps) {
-  const [sliderPosition, setSliderPosition] = useState([50]);
+  const [sliderPosition, setSliderPosition] = useState(50);
+  const [isDragging, setIsDragging] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseUp = () => setIsDragging(false);
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const newPosition = ((e.clientX - rect.left) / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, newPosition)));
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const newPosition = ((e.touches[0].clientX - rect.left) / rect.width) * 100;
+    setSliderPosition(Math.max(0, Math.min(100, newPosition)));
+  };
 
   return (
     <section className="py-20 bg-gradient-to-b from-white to-gray-50">
@@ -30,13 +47,22 @@ export default function BeforeAfterSlider({
         </div>
 
         <Card className="max-w-5xl mx-auto overflow-hidden shadow-2xl">
-          <div className="relative aspect-[16/10] overflow-hidden">
+          <div
+            ref={containerRef}
+            className="relative aspect-[16/10] overflow-hidden cursor-col-resize select-none bg-gray-200"
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setIsDragging(false)}
+            onMouseUp={handleMouseUp}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={() => setIsDragging(false)}
+          >
             {/* After Image (Background) */}
             <div className="absolute inset-0">
               <img
                 src={afterImage}
                 alt="After renovation"
                 className="w-full h-full object-cover"
+                draggable={false}
               />
               <div className="absolute top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
                 After
@@ -46,12 +72,13 @@ export default function BeforeAfterSlider({
             {/* Before Image (Sliding overlay) */}
             <div
               className="absolute inset-0 overflow-hidden"
-              style={{ clipPath: `inset(0 ${100 - sliderPosition[0]}% 0 0)` }}
+              style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
             >
               <img
                 src={beforeImage}
                 alt="Before renovation"
                 className="w-full h-full object-cover"
+                draggable={false}
               />
               <div className="absolute top-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
                 Before
@@ -60,29 +87,24 @@ export default function BeforeAfterSlider({
 
             {/* Slider Handle */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
-              style={{ left: `${sliderPosition[0]}%` }}
+              className="absolute top-0 bottom-0 w-1 bg-gold shadow-lg transition-none"
+              style={{ left: `${sliderPosition}%` }}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleMouseDown}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-xl flex items-center justify-center">
-                <div className="flex gap-1">
-                  <div className="w-0.5 h-6 bg-gray-400" />
-                  <div className="w-0.5 h-6 bg-gray-400" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:shadow-2xl transition-shadow">
+                <div className="flex gap-2">
+                  <div className="w-1 h-6 bg-gold rounded-full" />
+                  <div className="w-1 h-6 bg-gold rounded-full" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Slider Control */}
-          <div className="p-8 bg-white">
-            <Slider
-              value={sliderPosition}
-              onValueChange={setSliderPosition}
-              max={100}
-              step={1}
-              className="w-full"
-            />
-            <p className="text-center text-gray-600 mt-4 font-medium">
-              Drag to compare • {title}
+          {/* Instructions */}
+          <div className="p-8 bg-white text-center">
+            <p className="text-gray-600 font-medium">
+              👈 Drag to compare • {title} 👉
             </p>
           </div>
         </Card>
@@ -102,7 +124,7 @@ export default function BeforeAfterSlider({
             },
             {
               before: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=600&q=80",
-              after: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=600&q=80",
+              after: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80",
               label: "Exterior Upgrade"
             }
           ].map((item, index) => (
