@@ -52,6 +52,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        gold: {
+          DEFAULT: "#b45309",
+          soft: "#f6ad55",
+          muted: "#f9e6c6",
+          dark: "#93370d",
+        },
+        navy: "#0f172a",
       },
       borderRadius: {
         lg: "var(--radius)",

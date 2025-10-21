@@ -21,17 +21,17 @@ export default function InvestmentHero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold/20 border border-gold/30 rounded-full mb-6">
-            <TrendingUp className="w-4 h-4 text-gold" />
-            <span className="text-sm font-medium text-gold">Proven Track Record Since 2018</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gold-muted border border-gold-muted rounded-full mb-6">
+            <TrendingUp className="w-4 h-4 text-gold-soft" />
+            <span className="text-sm font-medium text-gold-soft">Proven Track Record Since 2018</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            Turn <span className="text-gold">$50K</span> Into{" "}
-            <span className="text-gold">$75K</span>
+            Turn <span className="text-gold-soft">$50K</span> Into{" "}
+            <span className="text-gold-soft">$75K</span>
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-300">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-soft to-gold">
               in 6 Months
             </span>
           </h1>
@@ -46,7 +46,7 @@ export default function InvestmentHero() {
             <Link href="/sign-up">
               <Button 
                 size="lg" 
-                className="bg-gold hover:bg-gold/90 text-navy px-8 py-6 text-lg font-semibold rounded-xl shadow-lg shadow-gold/30"
+                className="bg-gold hover:bg-gold-dark text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg shadow-gold-glow"
               >
                 Become an Investor
                 <ArrowRight className="ml-2 w-5 h-5" />
@@ -66,15 +66,15 @@ export default function InvestmentHero() {
           {/* Quick Stats */}
           <div className="grid grid-cols-3 gap-6 mt-12 pt-8 border-t border-white/10">
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">$12.5M+</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">$12.5M+</div>
               <div className="text-sm text-gray-400">Total Invested</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">47%</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">47%</div>
               <div className="text-sm text-gray-400">Avg. ROI</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-gold mb-1">89</div>
+              <div className="text-3xl font-bold text-gold-soft mb-1">89</div>
               <div className="text-sm text-gray-400">Successful Projects</div>
             </div>
           </div>

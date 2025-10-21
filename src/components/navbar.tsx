@@ -43,7 +43,7 @@ export default async function Navbar() {
                 Sign In
               </Link>
               <Link href="/sign-up">
-                <Button className="bg-gold hover:bg-gold/90 text-navy font-semibold">
+                <Button className="bg-gold hover:bg-gold-dark text-white font-semibold">
                   Become an Investor
                 </Button>
               </Link>

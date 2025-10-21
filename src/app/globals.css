@@ -16,19 +16,23 @@
     --secondary-foreground: 222 47% 11%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215 16% 47%;
-    --accent: 43 96% 56%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 26 85% 42%;
+    --accent-foreground: 0 0% 100%;
+    --brand-gold: 26 85% 42%;
+    --brand-gold-bright: 34 92% 60%;
+    --brand-gold-muted: 34 89% 85%;
+    --brand-navy: 222 47% 11%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
     --border: 214 32% 91%;
     --input: 214 32% 91%;
     --ring: 222 47% 11%;
     --radius: 0.5rem;
-    --chart-1: 43 96% 56%;
+    --chart-1: 26 85% 42%;
     --chart-2: 142 76% 36%;
     --chart-3: 222 47% 11%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-4: 34 92% 60%;
+    --chart-5: 40 98% 72%;
   }
 
   .dark {
@@ -44,18 +48,18 @@
     --secondary-foreground: 210 40% 98%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
-    --accent: 43 96% 56%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 26 85% 42%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217 33% 17%;
     --input: 217 33% 17%;
     --ring: 212 35% 70%;
-    --chart-1: 43 96% 56%;
+    --chart-1: 26 85% 42%;
     --chart-2: 142 76% 36%;
     --chart-3: 210 40% 98%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-4: 34 92% 60%;
+    --chart-5: 40 98% 72%;
   }
 }
 
@@ -70,15 +74,27 @@
 
 @layer utilities {
   .text-gold {
-    color: hsl(43, 96%, 56%);
+    color: hsl(var(--brand-gold));
+  }
+  .text-gold-soft {
+    color: hsl(var(--brand-gold-bright));
   }
   .bg-gold {
-    background-color: hsl(43, 96%, 56%);
+    background-color: hsl(var(--brand-gold));
+  }
+  .bg-gold-muted {
+    background-color: hsl(var(--brand-gold-muted));
   }
   .text-navy {
-    color: hsl(222, 47%, 11%);
+    color: hsl(var(--brand-navy));
   }
   .bg-navy {
-    background-color: hsl(222, 47%, 11%);
+    background-color: hsl(var(--brand-navy));
+  }
+  .border-gold-muted {
+    border-color: hsla(26, 85%, 42%, 0.3);
+  }
+  .shadow-gold-glow {
+    --tw-shadow-color: hsla(26, 85%, 42%, 0.3);
   }
 }

@@ -124,7 +124,7 @@ export default function OpportunitiesPage() {
                   <Badge className={getRiskColor(opp.riskLevel)}>
                     {opp.riskLevel} Risk
                   </Badge>
-                  <Badge className="bg-gold text-navy">
+                  <Badge className="bg-gold text-white">
                     {opp.spotsRemaining} Spots Left
                   </Badge>
                 </div>
@@ -178,7 +178,7 @@ export default function OpportunitiesPage() {
                     <div className="text-xs text-gray-600 mb-1">Target Sale Price</div>
                     <div className="font-bold text-emerald-600">${opp.targetSale.toLocaleString()}</div>
                   </div>
-                  <div className="p-3 bg-gold/10 rounded-lg">
+                  <div className="p-3 bg-gold-muted rounded-lg">
                     <div className="text-xs text-gray-600 mb-1">Projected ROI</div>
                     <div className="font-bold text-gold">{opp.projectedROI}%</div>
                   </div>
@@ -193,10 +193,10 @@ export default function OpportunitiesPage() {
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div 
+                  <div 
                       className="bg-gold h-2 rounded-full transition-all"
                       style={{ width: `${(opp.raised / opp.targetRaise) * 100}%` }}
-                    />
+                  />
                   </div>
                 </div>
 
@@ -226,7 +226,7 @@ export default function OpportunitiesPage() {
                 </div>
 
                 {/* CTA Button */}
-                <Button className="w-full bg-gold hover:bg-gold/90 text-navy font-semibold py-6">
+                <Button className="w-full bg-gold hover:bg-gold-dark text-white font-semibold py-6">
                   <TrendingUp className="w-5 h-5 mr-2" />
                   Invest Now - ${opp.minInvestment.toLocaleString()} Min
                 </Button>

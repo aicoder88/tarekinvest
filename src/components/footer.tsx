@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Building2 className="w-8 h-8 text-gold" />
+              <Building2 className="w-8 h-8 text-gold-soft" />
               <span className="text-2xl font-bold">TarekInvest</span>
             </div>
             <p className="text-gray-300 mb-4 max-w-md">
@@ -19,11 +19,11 @@ export default function Footer() {
             </p>
             <div className="space-y-2 text-sm text-gray-300">
               <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-gold" />
+                <Mail className="w-4 h-4 text-gold-soft" />
                 <span>invest@tarekinvest.com</span>
               </div>
               <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-gold" />
+                <Phone className="w-4 h-4 text-gold-soft" />
                 <span>(555) 123-4567</span>
               </div>
             </div>
@@ -33,10 +33,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link href="/opportunities" className="text-gray-300 hover:text-gold">Investment Opportunities</Link></li>
-              <li><Link href="/dashboard" className="text-gray-300 hover:text-gold">Dashboard</Link></li>
-              <li><Link href="#how-it-works" className="text-gray-300 hover:text-gold">How It Works</Link></li>
-              <li><Link href="#calculator" className="text-gray-300 hover:text-gold">ROI Calculator</Link></li>
+              <li><Link href="/opportunities" className="text-gray-300 hover:text-gold-soft">Investment Opportunities</Link></li>
+              <li><Link href="/dashboard" className="text-gray-300 hover:text-gold-soft">Dashboard</Link></li>
+              <li><Link href="#how-it-works" className="text-gray-300 hover:text-gold-soft">How It Works</Link></li>
+              <li><Link href="#calculator" className="text-gray-300 hover:text-gold-soft">ROI Calculator</Link></li>
             </ul>
           </div>
 
@@ -44,10 +44,10 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold text-white mb-4">Legal</h3>
             <ul className="space-y-2">
-              <li><Link href="#" className="text-gray-300 hover:text-gold">Privacy Policy</Link></li>
-              <li><Link href="#" className="text-gray-300 hover:text-gold">Terms of Service</Link></li>
-              <li><Link href="#" className="text-gray-300 hover:text-gold">Investment Disclaimer</Link></li>
-              <li><Link href="#" className="text-gray-300 hover:text-gold">SEC Compliance</Link></li>
+              <li><Link href="#" className="text-gray-300 hover:text-gold-soft">Privacy Policy</Link></li>
+              <li><Link href="#" className="text-gray-300 hover:text-gold-soft">Terms of Service</Link></li>
+              <li><Link href="#" className="text-gray-300 hover:text-gold-soft">Investment Disclaimer</Link></li>
+              <li><Link href="#" className="text-gray-300 hover:text-gold-soft">SEC Compliance</Link></li>
             </ul>
           </div>
         </div>

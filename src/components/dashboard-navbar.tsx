@@ -35,7 +35,7 @@ export default function DashboardNavbar() {
           
           <Button variant="ghost" size="icon" className="relative">
             <Bell className="w-5 h-5" />
-            <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-gold text-navy text-xs">
+            <Badge className="absolute -top-1 -right-1 w-5 h-5 p-0 flex items-center justify-center bg-gold text-white text-xs">
               3
             </Badge>
           </Button>

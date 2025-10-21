@@ -92,7 +92,7 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <Card className="p-6 border-2 hover:shadow-lg transition-shadow">
             <div className="flex items-center justify-between mb-4">
-              <div className="p-3 bg-gold/10 rounded-lg">
+              <div className="p-3 bg-gold-muted rounded-lg">
                 <DollarSign className="w-6 h-6 text-gold" />
               </div>
               <TrendingUp className="w-5 h-5 text-emerald-500" />
@@ -128,7 +128,7 @@ export default function DashboardPage() {
             <div className="text-sm text-gray-600">Total Returns Earned</div>
           </Card>
 
-          <Card className="p-6 border-2 hover:shadow-lg transition-shadow bg-gradient-to-br from-gold/10 to-yellow-100/50">
+          <Card className="p-6 border-2 hover:shadow-lg transition-shadow bg-gradient-to-br from-gold-muted to-amber-100">
             <div className="flex items-center justify-between mb-4">
               <div className="p-3 bg-white rounded-lg">
                 <TrendingUp className="w-6 h-6 text-gold" />
@@ -146,7 +146,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-navy">Active Investments</h2>
             <Link href="/opportunities">
-              <Button className="bg-gold hover:bg-gold/90 text-navy">
+              <Button className="bg-gold hover:bg-gold-dark text-white">
                 Browse New Opportunities
               </Button>
             </Link>

@@ -87,7 +87,7 @@ export default function ROICalculator() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-gradient-to-r from-gold/20 to-yellow-200/20 rounded-xl border-2 border-gold/30">
+                <div className="p-6 bg-gradient-to-r from-gold-muted to-gold-soft rounded-xl border-2 border-gold-muted">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-navy">Total Value</span>
                     <TrendingUp className="w-5 h-5 text-gold" />
@@ -118,7 +118,7 @@ export default function ROICalculator() {
                 </div>
               </div>
 
-              <Button className="w-full mt-6 bg-gold hover:bg-gold/90 text-navy font-semibold py-6">
+              <Button className="w-full mt-6 bg-gold hover:bg-gold-dark text-white font-semibold py-6">
                 Start Investing Today
               </Button>
             </Card>
@@ -137,7 +137,7 @@ export default function ROICalculator() {
                       <span className="font-semibold text-navy">TarekInvest</span>
                       <span className="font-bold text-gold">${totalValue.toLocaleString()}</span>
                     </div>
-                    <div className="h-8 bg-gradient-to-r from-gold to-yellow-400 rounded-lg relative overflow-hidden">
+                    <div className="h-8 bg-gradient-to-r from-gold to-gold-soft rounded-lg relative overflow-hidden">
                       <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-navy">
                         +{(avgROI * 100).toFixed(0)}% in 6 months
                       </div>
@@ -186,19 +186,19 @@ export default function ROICalculator() {
                 <h3 className="text-lg font-bold mb-3">Why TarekInvest Outperforms</h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-gold mt-1">✓</span>
+                    <span className="text-gold-soft mt-1">✓</span>
                     <span>Strategic property selection in high-growth markets</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gold mt-1">✓</span>
+                    <span className="text-gold-soft mt-1">✓</span>
                     <span>Expert renovation team maximizing property value</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gold mt-1">✓</span>
+                    <span className="text-gold-soft mt-1">✓</span>
                     <span>Fast turnaround (6-9 months vs. years)</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-gold mt-1">✓</span>
+                    <span className="text-gold-soft mt-1">✓</span>
                     <span>Proven track record with 89 successful projects</span>
                   </li>
                 </ul>
