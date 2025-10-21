@@ -146,7 +146,7 @@ export default function DashboardPage() {
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-navy">Active Investments</h2>
             <Link href="/opportunities">
-              <Button className="bg-gold hover:bg-gold-dark text-white">
+              <Button variant="gold">
                 Browse New Opportunities
               </Button>
             </Link>

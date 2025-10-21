@@ -44,19 +44,18 @@ export default function InvestmentHero() {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4">
             <Link href="/sign-up">
-              <Button 
-                size="lg" 
-                className="bg-gold hover:bg-gold-dark text-white px-8 py-6 text-lg font-semibold rounded-xl shadow-lg shadow-gold-glow"
+              <Button
+                size="lg"
+                variant="gold"
               >
                 Become an Investor
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
             <Link href="#success-story">
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-white/20 text-white hover:bg-white/10 px-8 py-6 text-lg font-semibold rounded-xl backdrop-blur-sm"
+              <Button
+                size="lg"
+                className="border-2 border-white/30 text-white hover:bg-white/15 hover:border-white/50 active:bg-white/20 px-8 text-lg font-semibold rounded-lg backdrop-blur-sm transition-all duration-200"
               >
                 View Success Stories
               </Button>
