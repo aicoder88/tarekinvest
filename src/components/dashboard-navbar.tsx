@@ -1,12 +1,16 @@
+'use client';
+
 import Link from 'next/link'
 import { Building2, Bell } from 'lucide-react'
 import { Button } from './ui/button'
 import UserProfile from './user-profile'
 import { Badge } from './ui/badge'
-import { isSupabaseConfigured } from '../../supabase/server'
 
 export default function DashboardNavbar() {
-  const supabaseReady = isSupabaseConfigured()
+  const supabaseReady = Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_URL &&
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
+  )
 
   return (
     <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50 shadow-sm">
