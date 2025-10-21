@@ -73,7 +73,7 @@ export default function SuccessStory() {
                 </Card>
                 <Card className="overflow-hidden">
                   <img
-                    src="https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=400&q=80"
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80"
                     alt="Interior 3"
                     className="w-full h-24 object-cover"
                   />
