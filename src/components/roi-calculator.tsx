@@ -40,10 +40,10 @@ export default function ROICalculator() {
             <span className="text-sm font-jakarta font-semibold text-emerald-700">Interactive Calculator</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-navy mb-4 tracking-tight">
-            Calculate Your Returns
+            Investment Calculator
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-dm">
-            See what <span className="font-semibold text-emerald-600">YOUR investment</span> could become with TarekInvest
+            Explore potential returns across our <span className="font-semibold text-emerald-600">diverse opportunities</span>
           </p>
         </div>
 
@@ -215,19 +215,19 @@ export default function ROICalculator() {
                 <ul className="space-y-2 text-sm font-dm relative">
                   <li className="flex items-start gap-2 group/item hover:translate-x-1 transition-transform duration-200">
                     <span className="text-emerald-400 mt-1">✓</span>
-                    <span>Strategic property selection in high-growth markets</span>
+                    <span>Diverse portfolio: Real estate, media, high-growth ventures</span>
                   </li>
                   <li className="flex items-start gap-2 group/item hover:translate-x-1 transition-transform duration-200">
                     <span className="text-emerald-400 mt-1">✓</span>
-                    <span>Expert renovation team maximizing property value</span>
+                    <span>Asset-backed security with equity conversion options</span>
                   </li>
                   <li className="flex items-start gap-2 group/item hover:translate-x-1 transition-transform duration-200">
                     <span className="text-emerald-400 mt-1">✓</span>
-                    <span>Fast turnaround (6-9 months vs. years)</span>
+                    <span>Fast turnaround (1.5-9 months typical timeline)</span>
                   </li>
                   <li className="flex items-start gap-2 group/item hover:translate-x-1 transition-transform duration-200">
                     <span className="text-emerald-400 mt-1">✓</span>
-                    <span>Proven track record with 89 successful projects</span>
+                    <span>Proven track record with 89 successful deals</span>
                   </li>
                 </ul>
               </Card>

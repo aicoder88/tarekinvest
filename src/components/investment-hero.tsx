@@ -88,19 +88,19 @@ export default function InvestmentHero() {
             <div className="animate-blur-in">
               <h1 className="text-5xl md:text-7xl font-jakarta font-bold leading-tight mb-6 tracking-tight">
                 <span className="inline-block animate-slide-down-fade" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
-                  Premium
+                  Exclusive
                 </span>
                 <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 bg-[length:200%_auto] animate-gradient inline-block animate-slide-down-fade" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
-                  Real Estate
+                  Investment
                 </span>
                 <br />
                 <span className="text-slate-300 inline-block animate-slide-down-fade" style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}>
-                  Investments
+                  Opportunities
                 </span>
               </h1>
               <p className="text-xl text-slate-300 leading-relaxed max-w-xl font-dm animate-slide-up-fade" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
-                Access institutional-grade property opportunities with proven returns
+                Access institutional-grade opportunities across real estate, media, and high-growth ventures
               </p>
             </div>
 
@@ -130,16 +130,16 @@ export default function InvestmentHero() {
             {/* Quick stats with staggered animations */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
               <div className="animate-slide-up-fade" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
-                <div className="text-3xl font-jakarta font-bold text-emerald-400 animate-count-up">$2.4M+</div>
-                <div className="text-sm font-dm text-slate-400 mt-1">Invested</div>
+                <div className="text-3xl font-jakarta font-bold text-emerald-400 animate-count-up">AED 12M+</div>
+                <div className="text-sm font-dm text-slate-400 mt-1">Funded</div>
               </div>
               <div className="animate-slide-up-fade" style={{ animationDelay: '0.7s', opacity: 0, animationFillMode: 'forwards' }}>
-                <div className="text-3xl font-jakarta font-bold text-amber-400 animate-count-up">24.7%</div>
+                <div className="text-3xl font-jakarta font-bold text-amber-400 animate-count-up">28%+</div>
                 <div className="text-sm font-dm text-slate-400 mt-1">Avg Return*</div>
               </div>
               <div className="animate-slide-up-fade" style={{ animationDelay: '0.8s', opacity: 0, animationFillMode: 'forwards' }}>
-                <div className="text-3xl font-jakarta font-bold text-blue-400 animate-count-up">47</div>
-                <div className="text-sm font-dm text-slate-400 mt-1">Projects</div>
+                <div className="text-3xl font-jakarta font-bold text-blue-400 animate-count-up">89</div>
+                <div className="text-sm font-dm text-slate-400 mt-1">Deals</div>
               </div>
             </div>
           </div>
@@ -148,28 +148,22 @@ export default function InvestmentHero() {
           <div className="relative group perspective-1000 animate-scale-up" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
             {/* Floating success card with enhanced shadows, animations, and 3D tilt */}
             <div className="relative bg-white rounded-3xl shadow-luxury-lg overflow-hidden transform hover:scale-105 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-emerald-100/20 hover:shadow-luxury preserve-3d tilt-hover">
-              {/* Before/After images */}
-              <div className="grid grid-cols-2 gap-0">
-                <div className="relative h-64">
-                  <Image
-                    src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80"
-                    alt="Before renovation"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 left-4 px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full">
-                    BEFORE
-                  </div>
+              {/* Hero image */}
+              <div className="relative h-64">
+                <Image
+                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80"
+                  alt="Media production set"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent" />
+                <div className="absolute top-4 left-4 px-3 py-1 bg-amber-500 text-white text-xs font-jakarta font-bold rounded-full">
+                  MEDIA
                 </div>
-                <div className="relative h-64">
-                  <Image
-                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80"
-                    alt="After renovation"
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-emerald-500 text-white text-xs font-bold rounded-full">
-                    AFTER
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="flex items-center gap-2 text-white">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="text-sm font-dm font-semibold">Funding Now</span>
                   </div>
                 </div>
               </div>
@@ -178,43 +172,43 @@ export default function InvestmentHero() {
               <div className="p-8 bg-gradient-to-br from-slate-50 to-white">
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-full bg-emerald-500" />
-                  <span className="text-sm font-semibold text-emerald-600">RECENT PROJECT</span>
+                  <span className="text-sm font-jakarta font-semibold text-emerald-600">ACTIVE OPPORTUNITY</span>
                 </div>
 
                 <h3 className="text-2xl font-jakarta font-bold text-slate-900 mb-6">
-                  Palm Jumeirah Villa
+                  Media Production Agency
                 </h3>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Purchase</span>
-                    <span className="font-jakarta font-bold text-slate-900">AED 1,000,000</span>
+                    <span className="text-slate-600 font-dm">Required Amount</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 550,000</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Renovation</span>
-                    <span className="font-jakarta font-bold text-slate-900">AED 250,000</span>
+                    <span className="text-slate-600 font-dm">Investment Range</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 155K+</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Sale Price</span>
-                    <span className="font-jakarta font-bold text-emerald-600">AED 3,000,000</span>
+                    <span className="text-slate-600 font-dm">Expected Profit</span>
+                    <span className="font-jakarta font-bold text-emerald-600">2-2.4% Monthly</span>
                   </div>
                   <div className="flex justify-between items-center pt-2">
-                    <span className="text-lg font-jakarta font-semibold text-slate-900">Profit</span>
+                    <span className="text-lg font-jakarta font-semibold text-slate-900">Timeline</span>
                     <div className="text-right">
-                      <div className="text-3xl font-jakarta font-bold text-emerald-600">AED 1,750,000</div>
-                      <div className="text-sm text-emerald-600 font-dm font-semibold">115% Return</div>
+                      <div className="text-3xl font-jakarta font-bold text-emerald-600">1.5-2</div>
+                      <div className="text-sm text-emerald-600 font-dm font-semibold">Months</div>
                     </div>
                   </div>
                 </div>
 
                 <div className="mt-6 space-y-3">
-                  <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <Clock className="w-4 h-4 flex-shrink-0" />
-                    <span>4 month timeline</span>
+                  <div className="flex items-center gap-2 text-sm text-slate-600 font-dm">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-500" />
+                    <span>TV ads, videography, film production</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-semibold whitespace-nowrap">
+                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-dm font-semibold">
                     <TrendingUp className="w-4 h-4 flex-shrink-0" />
-                    <span>+4% annually</span>
+                    <span>Asset-backed with equity conversion option</span>
                   </div>
                 </div>
               </div>
@@ -223,8 +217,8 @@ export default function InvestmentHero() {
             {/* Floating ROI badge with enhanced animation */}
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-amber-500/50 animate-float group-hover:scale-110 transition-all duration-300">
               <div className="text-center">
-                <div className="text-3xl font-jakarta font-bold text-white font-extrabold">30%</div>
-                <div className="text-xs text-white/90 font-dm font-semibold">ROI</div>
+                <div className="text-3xl font-jakarta font-bold text-white font-extrabold">2.4%</div>
+                <div className="text-xs text-white/90 font-dm font-semibold">Monthly</div>
               </div>
               {/* Pulsing border effect */}
               <div className="absolute inset-0 rounded-full border-2 border-amber-300 opacity-0 animate-ping" />

@@ -45,10 +45,10 @@ export default function BeforeAfterSlider({
             <span className="text-sm font-jakarta font-semibold text-slate-700">Before & After</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-gray-900 mb-4 tracking-tight">
-            Dramatic Transformations
+            Proven Success Stories
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto font-dm">
-            See how we turn distressed properties into <span className="font-semibold text-emerald-600">premium investments</span>
+            From real estate to media ventures - see our <span className="font-semibold text-emerald-600">diverse portfolio</span>
           </p>
         </div>
 
