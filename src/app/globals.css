@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -31,6 +33,15 @@
     --input: 214 32% 91%;
     --ring: 142 76% 36%;
     --radius: 0.75rem;
+
+    /* Shadow elevation tokens */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    --shadow-luxury: 0 20px 60px -15px rgba(0, 0, 0, 0.08), 0 10px 30px -10px rgba(0, 0, 0, 0.04);
+    --shadow-luxury-lg: 0 30px 90px -20px rgba(0, 0, 0, 0.12), 0 15px 45px -15px rgba(0, 0, 0, 0.06);
   }
 
   .dark {
@@ -60,33 +71,169 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Enhanced typography hierarchy */
+  h1 {
+    @apply font-bold tracking-tight;
+    font-weight: 800;
+    font-size: clamp(1.875rem, 5vw, 3.75rem);
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply font-bold;
+    font-weight: 700;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 1.2;
+  }
+
+  h3 {
+    @apply font-semibold;
+    font-weight: 600;
+    font-size: clamp(1.25rem, 3vw, 1.875rem);
+    line-height: 1.3;
+  }
+
+  p {
+    @apply text-base;
+    line-height: 1.6;
   }
 }
 
 @layer utilities {
+  /* Gradient text effects */
   .text-gradient-gold {
     @apply bg-gradient-to-r from-amber-200 via-yellow-400 to-amber-200 bg-clip-text text-transparent;
   }
   .text-gradient-emerald {
     @apply bg-gradient-to-r from-emerald-400 to-teal-500 bg-clip-text text-transparent;
   }
+
+  /* Background effects */
   .bg-mesh-gradient {
-    background: 
+    background:
       radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
       radial-gradient(at 100% 0%, rgba(251, 191, 36, 0.05) 0px, transparent 50%),
       radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.05) 0px, transparent 50%),
       radial-gradient(at 0% 100%, rgba(251, 191, 36, 0.05) 0px, transparent 50%);
   }
+
+  /* Glass morphism effects */
   .glass-effect {
     @apply bg-white/80 backdrop-blur-xl border border-white/20;
   }
+
+  .glass-effect-dark {
+    @apply bg-slate-900/80 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Elevation shadows */
   .shadow-luxury {
     box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.08), 0 10px 30px -10px rgba(0, 0, 0, 0.04);
   }
+
   .shadow-luxury-lg {
     box-shadow: 0 30px 90px -20px rgba(0, 0, 0, 0.12), 0 15px 45px -15px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Interactive hover effects */
+  .hover-lift {
+    @apply transition-all duration-300 hover:shadow-luxury-lg hover:-translate-y-1;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+
+  /* Micro-interaction utilities */
+  .transition-smooth {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .transition-fast {
+    @apply transition-all duration-150 ease-out;
+  }
+
+  /* Animation utilities */
+  .animate-gentle-float {
+    animation: gentle-float 3s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.5s ease-out;
+  }
+
+  /* Gradient animation */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  /* Focus states for accessibility */
+  .focus-ring {
+    @apply outline-none ring-2 ring-offset-2 ring-emerald-500;
+  }
+
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    animation: scroll-reveal 0.6s ease-out forwards;
+  }
+
+  /* Keyframe animations */
+  @keyframes gentle-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes scroll-reveal {
+    to {
+      opacity: 1;
+    }
   }
 }

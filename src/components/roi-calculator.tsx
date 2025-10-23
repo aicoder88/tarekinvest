@@ -5,7 +5,8 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
-import { TrendingUp, DollarSign, Calendar, Percent } from "lucide-react";
+import { TrendingUp, DollarSign, Calendar, Percent, Sparkles } from "lucide-react";
+import { useCountUp } from "@/hooks/useCountUp";
 
 export default function ROICalculator() {
   const [investment, setInvestment] = useState(50000);
@@ -20,8 +21,16 @@ export default function ROICalculator() {
   const stockMarketReturn = investment * 0.10; // 10% annual
   const savingsReturn = investment * 0.04; // 4% annual
 
+  // Countup animations
+  const animatedTotalValue = useCountUp({ end: Math.round(totalValue), duration: 800 });
+  const animatedProjectedReturn = useCountUp({ end: Math.round(projectedReturn), duration: 800 });
+  const animatedMonthlyReturn = useCountUp({ end: Math.round(monthlyReturn), duration: 800 });
+
   return (
-    <section id="calculator" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="calculator" className="py-20 bg-gradient-to-b from-white via-emerald-50/30 to-gray-50 relative overflow-hidden">
+      {/* Background orbs */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-emerald-100/20 rounded-full blur-3xl -z-10" />
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-100/20 rounded-full blur-3xl -z-10" />
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-navy mb-4">
@@ -35,7 +44,7 @@ export default function ROICalculator() {
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Calculator Input */}
-            <Card className="p-8 border-2 shadow-xl">
+            <Card className="p-8 border-2 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200">
               <div className="mb-6">
                 <Label htmlFor="investment" className="text-lg font-semibold text-navy mb-2 block">
                   Your Investment Amount
@@ -87,13 +96,13 @@ export default function ROICalculator() {
                   </div>
                 </div>
 
-                <div className="p-6 bg-gradient-to-r from-gold-muted to-gold-soft rounded-xl border-2 border-gold-muted">
+                <div className="p-6 bg-gradient-to-r from-emerald-400/15 to-teal-400/15 rounded-xl border-2 border-emerald-200/50 hover:border-emerald-400/50 transition-all">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-navy">Total Value</span>
-                    <TrendingUp className="w-5 h-5 text-gold" />
+                    <span className="text-sm font-semibold text-navy">Total Value</span>
+                    <TrendingUp className="w-5 h-5 text-emerald-500 animate-float" />
                   </div>
-                  <div className="text-4xl font-bold text-navy mb-1">
-                    ${totalValue.toLocaleString()}
+                  <div className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-1">
+                    ${animatedTotalValue.toLocaleString()}
                   </div>
                   <div className="text-sm text-gray-600">
                     in {timelineMonths} months • {(avgROI * 100).toFixed(0)}% ROI
@@ -125,7 +134,7 @@ export default function ROICalculator() {
 
             {/* Comparison Chart */}
             <div className="space-y-6">
-              <Card className="p-6 border-2">
+              <Card className="p-6 border-2 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 hover:-translate-y-1 hover:border-emerald-200">
                 <h3 className="text-xl font-bold text-navy mb-4">
                   Compare to Traditional Investments
                 </h3>
@@ -182,8 +191,11 @@ export default function ROICalculator() {
                 </div>
               </Card>
 
-              <Card className="p-6 bg-navy text-white border-2 border-navy">
-                <h3 className="text-lg font-bold mb-3">Why TarekInvest Outperforms</h3>
+              <Card className="p-6 bg-gradient-to-br from-navy to-slate-800 text-white border-2 border-navy/50 shadow-luxury hover:shadow-luxury-lg transition-all duration-300 hover:-translate-y-1">
+                <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                  <Sparkles className="w-5 h-5 text-emerald-400 animate-float" />
+                  Why TarekInvest Outperforms
+                </h3>
                 <ul className="space-y-2 text-sm">
                   <li className="flex items-start gap-2">
                     <span className="text-gold-soft mt-1">✓</span>
