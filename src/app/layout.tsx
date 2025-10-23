@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "TarekInvest | Real Estate Investing Platform",
   description: "Invest alongside Tarek's team, track deals, and forecast ROI across curated real estate opportunities.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

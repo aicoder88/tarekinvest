@@ -26,9 +26,12 @@ export default function InvestmentHero() {
           {/* Left: Minimal copy */}
           <div className="text-white space-y-8">
             {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 backdrop-blur-sm">
-              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-sm font-medium text-emerald-300">Exclusive • Private • Family & Friends Only</span>
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-emerald-500/20 to-teal-500/20 border border-emerald-400/50 backdrop-blur-md shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/40 transition-all duration-300">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-emerald-400 animate-pulse" />
+                <div className="w-2 h-2 rounded-full bg-emerald-300 animate-pulse" style={{ animationDelay: '0.3s' }} />
+              </div>
+              <span className="text-base font-semibold text-emerald-200">Exclusive • Private • Family & Friends Only</span>
             </div>
 
             {/* Updated headline */}
@@ -119,34 +122,40 @@ export default function InvestmentHero() {
                 </div>
 
                 <h3 className="text-2xl font-bold text-slate-900 mb-6">
-                  Oak Street Property
+                  Oakwood Drive Renovation
                 </h3>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
                     <span className="text-slate-600">Purchase</span>
-                    <span className="font-bold text-slate-900">$200,000</span>
+                    <span className="font-bold text-slate-900">AED 1,000,000</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
                     <span className="text-slate-600">Renovation</span>
-                    <span className="font-bold text-slate-900">$30,000</span>
+                    <span className="font-bold text-slate-900">AED 250,000</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
                     <span className="text-slate-600">Sale Price</span>
-                    <span className="font-bold text-emerald-600">$300,000</span>
+                    <span className="font-bold text-emerald-600">AED 3,000,000</span>
                   </div>
                   <div className="flex justify-between items-center pt-2">
                     <span className="text-lg font-semibold text-slate-900">Profit</span>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-emerald-600">$70,000</div>
-                      <div className="text-sm text-emerald-600 font-semibold">30% Return</div>
+                      <div className="text-3xl font-bold text-emerald-600">AED 1,750,000</div>
+                      <div className="text-sm text-emerald-600 font-semibold">115% Return</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 flex items-center gap-2 text-sm text-slate-600">
-                  <Clock className="w-4 h-4" />
-                  <span>4 month timeline</span>
+                <div className="mt-6 space-y-3">
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <Clock className="w-4 h-4" />
+                    <span>4 month timeline</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-semibold">
+                    <TrendingUp className="w-4 h-4" />
+                    <span>+4% annually</span>
+                  </div>
                 </div>
               </div>
             </div>
