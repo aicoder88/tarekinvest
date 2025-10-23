@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { createClient, isSupabaseConfigured } from '../../supabase/server'
 import { Button } from './ui/button'
-import { Building2 } from 'lucide-react'
+import { TrendingUp } from 'lucide-react'
 import UserProfile from './user-profile'
 
 export default async function Navbar() {
@@ -19,24 +19,26 @@ export default async function Navbar() {
 
 
   return (
-    <nav className="w-full border-b border-gray-200 bg-white py-4 sticky top-0 z-50 shadow-sm">
+    <nav className="w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-xl py-5 sticky top-0 z-50 shadow-sm">
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" prefetch className="flex items-center gap-2">
-          <Building2 className="w-8 h-8 text-gold" />
-          <span className="text-2xl font-bold text-navy">TarekInvest</span>
+        <Link href="/" prefetch className="flex items-center gap-3 group">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all">
+            <TrendingUp className="w-6 h-6 text-white" />
+          </div>
+          <span className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">TarekInvest</span>
         </Link>
-        <div className="flex gap-6 items-center">
+        <div className="flex gap-8 items-center">
           {user ? (
             <>
               <Link
                 href="/dashboard"
-                className="text-sm font-medium text-gray-700 hover:text-navy"
+                className="text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
               >
                 Dashboard
               </Link>
               <Link
                 href="/opportunities"
-                className="text-sm font-medium text-gray-700 hover:text-navy"
+                className="text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
               >
                 Opportunities
               </Link>
@@ -46,12 +48,12 @@ export default async function Navbar() {
             <>
               <Link
                 href="/sign-in"
-                className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-navy"
+                className="px-5 py-2.5 text-sm font-semibold text-slate-700 hover:text-slate-900 transition-colors"
               >
                 Sign In
               </Link>
               <Link href="/sign-up">
-                <Button className="bg-gold hover:bg-gold-dark text-white font-semibold">
+                <Button className="bg-slate-900 hover:bg-slate-800 text-white font-semibold px-6 py-2.5 rounded-xl shadow-lg hover:shadow-xl transition-all">
                   Become an Investor
                 </Button>
               </Link>

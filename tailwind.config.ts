@@ -52,13 +52,31 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "#b45309",
-          soft: "#f6ad55",
-          muted: "#f9e6c6",
-          dark: "#93370d",
+        navy: {
+          DEFAULT: "#1e293b",
+          light: "#334155",
+          dark: "#0f172a",
         },
-        navy: "#0f172a",
+        platinum: {
+          DEFAULT: "#94a3b8",
+          light: "#cbd5e1",
+          dark: "#64748b",
+        },
+        sage: {
+          DEFAULT: "#4d8b74",
+          light: "#6fa88f",
+          dark: "#3d6f5d",
+        },
+        champagne: {
+          DEFAULT: "#f5ede1",
+          light: "#faf6f0",
+          dark: "#e8dcc8",
+        },
+        silver: {
+          DEFAULT: "#f8fafc",
+          light: "#ffffff",
+          dark: "#f1f5f9",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
