@@ -26,9 +26,12 @@ export default function InvestmentHero() {
 
   return (
     <div className="relative min-h-screen bg-slate-950 overflow-hidden smooth-scroll">
+      {/* Animated gradient background layer */}
+      <div className="absolute inset-0 animated-gradient-subtle opacity-60" />
+
       {/* Prominent background image with sophisticated overlay + parallax */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 parallax-slow"
         style={{
           transform: `translateY(${scrollY * 0.5}px)`,
           transition: 'transform 0.1s ease-out'
@@ -145,9 +148,9 @@ export default function InvestmentHero() {
           </div>
 
           {/* Right: Visual proof - Featured deal card */}
-          <div className="relative group perspective-1000 animate-scale-up" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
+          <div className="relative group perspective-1000 animate-scale-up float-gentle" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
             {/* Floating success card with enhanced shadows, animations, and 3D tilt */}
-            <div className="relative bg-white rounded-3xl shadow-luxury-lg overflow-hidden transform hover:scale-105 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-emerald-100/20 hover:shadow-luxury preserve-3d tilt-hover">
+            <div className="relative bg-white rounded-3xl shadow-luxury-lg overflow-hidden transform hover:scale-105 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-emerald-100/20 hover:shadow-luxury preserve-3d tilt-hover z-depth-4">
               {/* Hero image */}
               <div className="relative h-64">
                 <Image

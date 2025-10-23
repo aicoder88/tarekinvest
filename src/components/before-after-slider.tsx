@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Card } from "./ui/card";
 
 interface BeforeAfterSliderProps {
@@ -16,7 +16,30 @@ export default function BeforeAfterSlider({
 }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const handleMouseDown = () => setIsDragging(true);
   const handleMouseUp = () => setIsDragging(false);
@@ -35,13 +58,22 @@ export default function BeforeAfterSlider({
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 animated-gradient-subtle opacity-20" />
+
       {/* Subtle background decoration */}
       <div className="absolute inset-0 gradient-mesh opacity-30" />
 
+      {/* Floating orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/3 left-1/4 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-float-delayed" />
+      </div>
+
       <div className="container mx-auto px-4 relative">
-        <div className="text-center mb-12 animate-slide-up-fade">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 backdrop-blur-sm rounded-full mb-6 border border-slate-200">
+        <div className={`text-center mb-12 reveal-on-scroll ${isVisible ? 'revealed' : ''}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 backdrop-blur-sm rounded-full mb-6 border border-slate-200 shadow-sm">
             <span className="text-sm font-jakarta font-semibold text-slate-700">Before & After</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-gray-900 mb-4 tracking-tight">
@@ -52,7 +84,7 @@ export default function BeforeAfterSlider({
           </p>
         </div>
 
-        <Card className="max-w-5xl mx-auto overflow-hidden shadow-luxury-lg hover:shadow-luxury transition-all duration-500 animate-scale-up" style={{ animationDelay: '0.2s' }}>
+        <Card className={`max-w-5xl mx-auto overflow-hidden shadow-luxury-lg hover:shadow-luxury transition-all duration-500 z-depth-3 reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
           <div
             ref={containerRef}
             className="relative aspect-[16/10] overflow-hidden cursor-col-resize select-none bg-gray-200"
@@ -139,7 +171,7 @@ export default function BeforeAfterSlider({
               label: "Exterior Upgrade"
             }
           ].map((item, index) => (
-            <Card key={index} className="overflow-hidden shadow-luxury hover:shadow-luxury-lg transition-all duration-500 hover:-translate-y-2 group animate-scale-up" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
+            <Card key={index} className={`overflow-hidden shadow-luxury hover:shadow-luxury-lg transition-all duration-500 hover:-translate-y-2 group z-depth-2 reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${0.4 + index * 0.1}s` }}>
               <div className="grid grid-cols-2">
                 <div className="relative aspect-square overflow-hidden">
                   <img src={item.before} alt="Before" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />

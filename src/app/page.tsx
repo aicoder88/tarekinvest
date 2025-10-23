@@ -9,7 +9,7 @@ import ROICalculator from "@/components/roi-calculator";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white smooth-scroll">
       <Navbar />
       <InvestmentHero />
       <TrustIndicators />

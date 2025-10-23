@@ -175,11 +175,12 @@ export default function ROICalculator() {
                         ${(investment + stockMarketReturn).toLocaleString()}
                       </span>
                     </div>
-                    <div 
-                      className="h-8 bg-blue-200 rounded-lg relative overflow-hidden"
-                      style={{ width: `${(stockMarketReturn / projectedReturn) * 100}%` }}
-                    >
-                      <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-700 whitespace-nowrap">
+                    <div className="w-full h-8 bg-gray-100 rounded-lg relative overflow-hidden">
+                      <div
+                        className="h-full bg-blue-300 rounded-lg transition-all duration-500"
+                        style={{ width: `${Math.max(25, (stockMarketReturn / projectedReturn) * 100)}%` }}
+                      />
+                      <div className="absolute inset-0 flex items-center px-3 text-sm font-semibold text-gray-700">
                         +10% annually
                       </div>
                     </div>
@@ -193,11 +194,12 @@ export default function ROICalculator() {
                         ${(investment + savingsReturn).toLocaleString()}
                       </span>
                     </div>
-                    <div 
-                      className="h-8 bg-gray-200 rounded-lg relative overflow-hidden"
-                      style={{ width: `${(savingsReturn / projectedReturn) * 100}%` }}
-                    >
-                      <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold text-gray-700 whitespace-nowrap">
+                    <div className="w-full h-8 bg-gray-100 rounded-lg relative overflow-hidden">
+                      <div
+                        className="h-full bg-gray-300 rounded-lg transition-all duration-500"
+                        style={{ width: `${Math.max(20, (savingsReturn / projectedReturn) * 100)}%` }}
+                      />
+                      <div className="absolute inset-0 flex items-center px-3 text-sm font-semibold text-gray-700">
                         +4% annually
                       </div>
                     </div>

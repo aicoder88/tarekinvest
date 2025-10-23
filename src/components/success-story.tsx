@@ -1,8 +1,34 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { TrendingUp, Home, Hammer, DollarSign } from "lucide-react";
 
 export default function SuccessStory() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   const financials = [
     {
       label: "Purchase Price",
@@ -31,16 +57,25 @@ export default function SuccessStory() {
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <Badge className="mb-4 px-4 py-2 text-sm bg-emerald-100 text-emerald-700 hover:bg-emerald-100">
+    <section ref={sectionRef} className="py-20 bg-white relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 animated-gradient-subtle opacity-10" />
+
+      {/* Floating orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/3 left-1/3 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl float-gentle" />
+        <div className="absolute bottom-1/3 right-1/3 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl float-moderate" />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        <div className={`text-center mb-12 reveal-on-scroll ${isVisible ? 'revealed' : ''}`}>
+          <Badge className="mb-4 px-4 py-2 text-sm bg-emerald-100 text-emerald-700 hover:bg-emerald-100 shadow-sm">
             Featured Success Story
           </Badge>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-gray-900 mb-4 tracking-tight">
             Real Results, Real Returns
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-dm">
             See how we turned a distressed property into a 40% ROI in just 5 months
           </p>
         </div>
@@ -48,8 +83,8 @@ export default function SuccessStory() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 items-center">
             {/* Property Images */}
-            <div className="space-y-4">
-              <Card className="overflow-hidden shadow-xl">
+            <div className={`space-y-4 reveal-left ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.2s' }}>
+              <Card className="overflow-hidden shadow-xl hover:shadow-luxury-lg transition-all duration-500 z-depth-3">
                 <img
                   src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
                   alt="Renovated property"
@@ -82,8 +117,8 @@ export default function SuccessStory() {
             </div>
 
             {/* Financial Breakdown */}
-            <div>
-              <Card className="p-8 border-2 shadow-xl">
+            <div className={`reveal-right ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.3s' }}>
+              <Card className="p-8 border-2 shadow-xl hover:shadow-luxury-lg transition-all duration-500 z-depth-3 border-emerald-100 hover:border-emerald-200">
                 <div className="mb-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     Oakwood Drive Renovation

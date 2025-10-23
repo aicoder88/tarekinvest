@@ -66,11 +66,15 @@ export default function TrustIndicators() {
   ];
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/30 to-white gradient-mesh relative overflow-hidden">
-      {/* Decorative background elements */}
+    <section ref={sectionRef} className="py-16 md:py-20 bg-gradient-to-b from-white via-gray-50/30 to-white relative overflow-hidden">
+      {/* Animated gradient mesh background */}
+      <div className="absolute inset-0 animated-gradient-subtle opacity-30" />
+
+      {/* Decorative background elements with parallax */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-emerald-500/5 rounded-full blur-3xl animate-float" />
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-teal-500/5 rounded-full blur-3xl animate-float-delayed" />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl float-moderate" />
       </div>
 
       <div className="container mx-auto px-4 relative">
@@ -80,12 +84,11 @@ export default function TrustIndicators() {
               key={index}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className={`p-4 md:p-6 text-center shadow-luxury hover:shadow-luxury-lg transition-all duration-500 hover:-translate-y-3 border-2 border-slate-100 hover:border-emerald-200 cursor-pointer group backdrop-blur-sm bg-white/90 perspective-1000 ${
-                isVisible ? 'animate-scale-up' : 'opacity-0'
+              className={`p-4 md:p-6 text-center shadow-luxury hover:shadow-luxury-lg transition-all duration-500 hover:-translate-y-3 border-2 border-slate-100 hover:border-emerald-200 cursor-pointer group backdrop-blur-sm bg-white/90 perspective-1000 reveal-scale z-depth-2 ${
+                isVisible ? 'revealed' : ''
               }`}
               style={{
-                animationDelay: `${index * 0.1}s`,
-                animationFillMode: 'forwards'
+                transitionDelay: `${index * 0.1}s`
               }}
             >
               {/* Hover glow effect */}

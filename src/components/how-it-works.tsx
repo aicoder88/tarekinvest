@@ -1,7 +1,33 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
 import { Search, Hammer, TrendingUp, Banknote } from "lucide-react";
 import { Card } from "./ui/card";
 
 export default function HowItWorks() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
   const steps = [
     {
       icon: <Search className="w-10 h-10" />,
@@ -38,13 +64,25 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 animated-gradient-subtle opacity-20" />
+
+      {/* Floating orbs */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl float-gentle" />
+        <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-emerald-500/5 rounded-full blur-3xl float-moderate" />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
+        <div className={`text-center mb-16 reveal-on-scroll ${isVisible ? 'revealed' : ''}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 backdrop-blur-sm rounded-full mb-6 border border-slate-200 shadow-sm">
+            <span className="text-sm font-jakarta font-semibold text-slate-700">Our Process</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-gray-900 mb-4 tracking-tight">
             How It Works
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-dm">
             A simple, proven process that turns your capital into consistent returns
           </p>
         </div>
@@ -53,7 +91,7 @@ export default function HowItWorks() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, index) => (
               <div key={index} className="relative">
-                <Card className={`p-6 h-full hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-2 ${step.borderColor}`}>
+                <Card className={`p-6 h-full hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border-2 ${step.borderColor} z-depth-2 reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: `${index * 0.1}s` }}>
                   {/* Step Number */}
                   <div className="absolute -top-4 -left-4 w-12 h-12 bg-gray-900 text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg">
                     {index + 1}
@@ -86,7 +124,7 @@ export default function HowItWorks() {
 
         {/* Timeline Visual */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <Card className="p-8 bg-gradient-to-r from-blue-50 to-emerald-50 border-2">
+          <Card className={`p-8 bg-gradient-to-r from-blue-50 to-emerald-50 border-2 border-blue-200 shadow-luxury hover:shadow-luxury-lg transition-all duration-500 z-depth-2 reveal-scale ${isVisible ? 'revealed' : ''}`} style={{ transitionDelay: '0.5s' }}>
             <div className="flex items-center justify-between">
               <div className="text-center flex-1">
                 <div className="text-2xl font-bold text-gray-900 mb-1">Day 1</div>
