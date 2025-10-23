@@ -1,22 +1,41 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Clock, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
 export default function InvestmentHero() {
-  const [scrollY, setScrollY] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const parallaxRef = useRef<HTMLDivElement>(null);
+  const orb1Ref = useRef<HTMLDivElement>(null);
+  const orb2Ref = useRef<HTMLDivElement>(null);
+  const orb3Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const handleScroll = () => {
+      if (parallaxRef.current) {
+        const scrollY = window.scrollY;
+        parallaxRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('mousemove', handleMouseMove);
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      if (orb1Ref.current) {
+        orb1Ref.current.style.transform = `translate(${x * 0.02}px, ${y * 0.02}px)`;
+      }
+      if (orb2Ref.current) {
+        orb2Ref.current.style.transform = `translate(${-x * 0.015}px, ${-y * 0.015}px)`;
+      }
+      if (orb3Ref.current) {
+        orb3Ref.current.style.transform = `translate(${x * 0.01}px, ${y * 0.01}px)`;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -31,10 +50,10 @@ export default function InvestmentHero() {
 
       {/* Prominent background image with sophisticated overlay + parallax */}
       <div
-        className="absolute inset-0 parallax-slow"
+        ref={parallaxRef}
+        className="absolute inset-0 will-change-transform"
         style={{
-          transform: `translateY(${scrollY * 0.5}px)`,
-          transition: 'transform 0.1s ease-out'
+          transition: 'transform 0.05s linear'
         }}
       >
         <Image
@@ -52,24 +71,24 @@ export default function InvestmentHero() {
 
       {/* Animated gradient orbs with enhanced animation and mouse parallax */}
       <div
-        className="absolute top-1/4 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-float pointer-events-none"
+        ref={orb1Ref}
+        className="absolute top-1/4 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-float pointer-events-none will-change-transform"
         style={{
-          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
           transition: 'transform 0.3s ease-out'
         }}
       />
       <div
-        className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-float-delayed pointer-events-none"
+        ref={orb2Ref}
+        className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-float-delayed pointer-events-none will-change-transform"
         style={{
-          transform: `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)`,
           transition: 'transform 0.3s ease-out'
         }}
       />
       <div
-        className="absolute top-1/2 left-1/3 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl animate-pulse pointer-events-none"
+        ref={orb3Ref}
+        className="absolute top-1/2 left-1/3 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl animate-pulse pointer-events-none will-change-transform"
         style={{
           animationDuration: '4s',
-          transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
           transition: 'transform 0.3s ease-out'
         }}
       />
@@ -154,14 +173,14 @@ export default function InvestmentHero() {
               {/* Hero image */}
               <div className="relative h-64">
                 <Image
-                  src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80"
-                  alt="Media production set"
+                  src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"
+                  alt="Luxury Dubai property"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/20 to-transparent" />
-                <div className="absolute top-4 left-4 px-3 py-1 bg-amber-500 text-white text-xs font-jakarta font-bold rounded-full">
-                  MEDIA
+                <div className="absolute top-4 left-4 px-3 py-1 bg-blue-500 text-white text-xs font-jakarta font-bold rounded-full">
+                  REAL ESTATE
                 </div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <div className="flex items-center gap-2 text-white">
@@ -179,26 +198,26 @@ export default function InvestmentHero() {
                 </div>
 
                 <h3 className="text-2xl font-jakarta font-bold text-slate-900 mb-6">
-                  Media Production Agency
+                  Dubai Luxury Property
                 </h3>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Required Amount</span>
-                    <span className="font-jakarta font-bold text-slate-900">AED 550,000</span>
+                    <span className="text-slate-600 font-dm">Property Value</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 2.8M</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Investment Range</span>
-                    <span className="font-jakarta font-bold text-slate-900">AED 155K+</span>
+                    <span className="text-slate-600 font-dm">Min. Investment</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 250K</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600 font-dm">Expected Profit</span>
-                    <span className="font-jakarta font-bold text-emerald-600">2-2.4% Monthly</span>
+                    <span className="text-slate-600 font-dm">Expected Return</span>
+                    <span className="font-jakarta font-bold text-emerald-600">18-22% Annual</span>
                   </div>
                   <div className="flex justify-between items-center pt-2">
                     <span className="text-lg font-jakarta font-semibold text-slate-900">Timeline</span>
                     <div className="text-right">
-                      <div className="text-3xl font-jakarta font-bold text-emerald-600">1.5-2</div>
+                      <div className="text-3xl font-jakarta font-bold text-emerald-600">12-18</div>
                       <div className="text-sm text-emerald-600 font-dm font-semibold">Months</div>
                     </div>
                   </div>
@@ -207,11 +226,11 @@ export default function InvestmentHero() {
                 <div className="mt-6 space-y-3">
                   <div className="flex items-center gap-2 text-sm text-slate-600 font-dm">
                     <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-500" />
-                    <span>TV ads, videography, film production</span>
+                    <span>Prime location in Dubai Marina</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-emerald-600 font-dm font-semibold">
                     <TrendingUp className="w-4 h-4 flex-shrink-0" />
-                    <span>Asset-backed with equity conversion option</span>
+                    <span>Secured by property deed & equity</span>
                   </div>
                 </div>
               </div>
@@ -220,8 +239,8 @@ export default function InvestmentHero() {
             {/* Floating ROI badge with enhanced animation */}
             <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-amber-500/50 animate-float group-hover:scale-110 transition-all duration-300">
               <div className="text-center">
-                <div className="text-3xl font-jakarta font-bold text-white font-extrabold">2.4%</div>
-                <div className="text-xs text-white/90 font-dm font-semibold">Monthly</div>
+                <div className="text-3xl font-jakarta font-bold text-white font-extrabold">22%</div>
+                <div className="text-xs text-white/90 font-dm font-semibold">Annual</div>
               </div>
               {/* Pulsing border effect */}
               <div className="absolute inset-0 rounded-full border-2 border-amber-300 opacity-0 animate-ping" />
