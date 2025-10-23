@@ -149,11 +149,11 @@ export default function InvestmentHero() {
 
                 <div className="mt-6 space-y-3">
                   <div className="flex items-center gap-2 text-sm text-slate-600">
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-4 h-4 flex-shrink-0" />
                     <span>4 month timeline</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-semibold">
-                    <TrendingUp className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-sm text-emerald-600 font-semibold whitespace-nowrap">
+                    <TrendingUp className="w-4 h-4 flex-shrink-0" />
                     <span>+4% annually</span>
                   </div>
                 </div>
