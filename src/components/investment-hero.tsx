@@ -1,12 +1,39 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import { ArrowRight, TrendingUp, Clock, CheckCircle2 } from 'lucide-react';
 import Image from 'next/image';
 
 export default function InvestmentHero() {
+  const [scrollY, setScrollY] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-slate-950 overflow-hidden">
-      {/* Prominent background image with sophisticated overlay */}
-      <div className="absolute inset-0">
+    <div className="relative min-h-screen bg-slate-950 overflow-hidden smooth-scroll">
+      {/* Prominent background image with sophisticated overlay + parallax */}
+      <div
+        className="absolute inset-0"
+        style={{
+          transform: `translateY(${scrollY * 0.5}px)`,
+          transition: 'transform 0.1s ease-out'
+        }}
+      >
         <Image
           src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=2000&q=90"
           alt="Luxury property"
@@ -14,15 +41,35 @@ export default function InvestmentHero() {
           className="object-cover opacity-60"
           priority
         />
-        {/* Multi-stop gradient overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/75 via-slate-900/65 to-emerald-950/50" />
+        {/* Multi-stop gradient overlay for depth with noise texture */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/75 via-slate-900/65 to-emerald-950/50 noise-texture" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+        <div className="absolute inset-0 gradient-mesh" />
       </div>
 
-      {/* Animated gradient orbs with enhanced animation */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-float pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-float-delayed pointer-events-none" />
-      <div className="absolute top-1/2 left-1/3 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
+      {/* Animated gradient orbs with enhanced animation and mouse parallax */}
+      <div
+        className="absolute top-1/4 right-1/4 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl animate-float pointer-events-none"
+        style={{
+          transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)`,
+          transition: 'transform 0.3s ease-out'
+        }}
+      />
+      <div
+        className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl animate-float-delayed pointer-events-none"
+        style={{
+          transform: `translate(${-mousePosition.x * 0.015}px, ${-mousePosition.y * 0.015}px)`,
+          transition: 'transform 0.3s ease-out'
+        }}
+      />
+      <div
+        className="absolute top-1/2 left-1/3 w-72 h-72 bg-teal-500/5 rounded-full blur-3xl animate-pulse pointer-events-none"
+        style={{
+          animationDuration: '4s',
+          transform: `translate(${mousePosition.x * 0.01}px, ${mousePosition.y * 0.01}px)`,
+          transition: 'transform 0.3s ease-out'
+        }}
+      />
 
       <div className="relative container mx-auto px-4 pt-32 pb-20">
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
@@ -37,28 +84,34 @@ export default function InvestmentHero() {
               <span className="text-base font-semibold text-emerald-200 group-hover:text-emerald-100 transition-colors">Exclusive • Private • Family & Friends Only</span>
             </div>
 
-            {/* Updated headline */}
-            <div>
-              <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
-                Premium
+            {/* Updated headline with enhanced typography */}
+            <div className="animate-blur-in">
+              <h1 className="text-5xl md:text-7xl font-jakarta font-bold leading-tight mb-6 tracking-tight">
+                <span className="inline-block animate-slide-down-fade" style={{ animationDelay: '0.1s', opacity: 0, animationFillMode: 'forwards' }}>
+                  Premium
+                </span>
                 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">Real Estate</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-400 bg-[length:200%_auto] animate-gradient inline-block animate-slide-down-fade" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
+                  Real Estate
+                </span>
                 <br />
-                <span className="text-slate-300">Investments</span>
+                <span className="text-slate-300 inline-block animate-slide-down-fade" style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}>
+                  Investments
+                </span>
               </h1>
-              <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
+              <p className="text-xl text-slate-300 leading-relaxed max-w-xl font-dm animate-slide-up-fade" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
                 Access institutional-grade property opportunities with proven returns
               </p>
             </div>
 
-            {/* CTA buttons with enhanced micro-interactions and mobile touch targets */}
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            {/* CTA buttons with magnetic hover and stagger animation */}
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 animate-scale-up" style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}>
               <Link
                 href="/sign-up"
-                className="group inline-flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-4 md:py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl hover:from-emerald-600 hover:to-teal-600 active:from-emerald-700 active:to-teal-700 transition-all duration-300 shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-500/60 hover:scale-105 active:scale-95 text-base md:text-lg font-bold relative overflow-hidden min-h-14 md:min-h-auto"
+                className="group magnetic-hover inline-flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-4 md:py-5 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-2xl hover:from-emerald-600 hover:to-teal-600 active:from-emerald-700 active:to-teal-700 transition-all duration-300 shadow-2xl shadow-emerald-500/30 hover:shadow-emerald-500/60 hover:shadow-luxury-lg active:scale-95 text-base md:text-lg font-jakarta font-bold relative overflow-hidden min-h-14 md:min-h-auto"
               >
                 {/* Shine effect on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-20 bg-gradient-to-r from-transparent via-white to-transparent transition-opacity duration-300" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-30 bg-gradient-to-r from-transparent via-white to-transparent group-hover:animate-shimmer transition-opacity duration-300" />
                 <span className="relative flex items-center gap-2 md:gap-3">
                   Become an Investor
                   <ArrowRight className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -67,34 +120,34 @@ export default function InvestmentHero() {
 
               <Link
                 href="#calculator"
-                className="inline-flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-4 md:py-5 bg-white/10 backdrop-blur-sm text-white rounded-2xl hover:bg-white/20 active:bg-white/30 transition-all duration-300 border border-white/20 hover:border-white/40 text-base md:text-lg font-semibold group min-h-14 md:min-h-auto"
+                className="magnetic-hover inline-flex items-center justify-center gap-2 md:gap-3 px-6 md:px-8 py-4 md:py-5 bg-white/10 backdrop-blur-strong text-white rounded-2xl hover:bg-white/20 active:bg-white/30 transition-all duration-300 border border-white/20 hover:border-white/40 hover:shadow-luxury text-base md:text-lg font-jakarta font-semibold group min-h-14 md:min-h-auto"
               >
                 <span className="group-hover:text-emerald-300 transition-colors">View Opportunities</span>
-                <TrendingUp className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-y-1 transition-transform duration-300" />
+                <TrendingUp className="w-4 md:w-5 h-4 md:h-5 group-hover:translate-y-[-2px] transition-transform duration-300" />
               </Link>
             </div>
 
-            {/* Quick stats */}
+            {/* Quick stats with staggered animations */}
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-white/10">
-              <div>
-                <div className="text-3xl font-bold text-emerald-400">$2.4M+</div>
-                <div className="text-sm text-slate-400 mt-1">Invested</div>
+              <div className="animate-slide-up-fade" style={{ animationDelay: '0.6s', opacity: 0, animationFillMode: 'forwards' }}>
+                <div className="text-3xl font-jakarta font-bold text-emerald-400 animate-count-up">$2.4M+</div>
+                <div className="text-sm font-dm text-slate-400 mt-1">Invested</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-amber-400">24.7%</div>
-                <div className="text-sm text-slate-400 mt-1">Avg Return*</div>
+              <div className="animate-slide-up-fade" style={{ animationDelay: '0.7s', opacity: 0, animationFillMode: 'forwards' }}>
+                <div className="text-3xl font-jakarta font-bold text-amber-400 animate-count-up">24.7%</div>
+                <div className="text-sm font-dm text-slate-400 mt-1">Avg Return*</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-blue-400">47</div>
-                <div className="text-sm text-slate-400 mt-1">Projects</div>
+              <div className="animate-slide-up-fade" style={{ animationDelay: '0.8s', opacity: 0, animationFillMode: 'forwards' }}>
+                <div className="text-3xl font-jakarta font-bold text-blue-400 animate-count-up">47</div>
+                <div className="text-sm font-dm text-slate-400 mt-1">Projects</div>
               </div>
             </div>
           </div>
 
           {/* Right: Visual proof - Featured deal card */}
-          <div className="relative group">
-            {/* Floating success card with enhanced shadows and animations */}
-            <div className="relative bg-white rounded-3xl shadow-luxury-lg overflow-hidden transform hover:scale-105 hover:-translate-y-2 transition-all duration-500 cursor-pointer border border-emerald-100/20">
+          <div className="relative group perspective-1000 animate-scale-up" style={{ animationDelay: '0.4s', opacity: 0, animationFillMode: 'forwards' }}>
+            {/* Floating success card with enhanced shadows, animations, and 3D tilt */}
+            <div className="relative bg-white rounded-3xl shadow-luxury-lg overflow-hidden transform hover:scale-105 hover:-translate-y-3 transition-all duration-500 cursor-pointer border border-emerald-100/20 hover:shadow-luxury preserve-3d tilt-hover">
               {/* Before/After images */}
               <div className="grid grid-cols-2 gap-0">
                 <div className="relative h-64">
@@ -128,28 +181,28 @@ export default function InvestmentHero() {
                   <span className="text-sm font-semibold text-emerald-600">RECENT PROJECT</span>
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900 mb-6">
+                <h3 className="text-2xl font-jakarta font-bold text-slate-900 mb-6">
                   Palm Jumeirah Villa
                 </h3>
 
                 <div className="space-y-4">
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600">Purchase</span>
-                    <span className="font-bold text-slate-900">AED 1,000,000</span>
+                    <span className="text-slate-600 font-dm">Purchase</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 1,000,000</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600">Renovation</span>
-                    <span className="font-bold text-slate-900">AED 250,000</span>
+                    <span className="text-slate-600 font-dm">Renovation</span>
+                    <span className="font-jakarta font-bold text-slate-900">AED 250,000</span>
                   </div>
                   <div className="flex justify-between items-center pb-3 border-b border-slate-200">
-                    <span className="text-slate-600">Sale Price</span>
-                    <span className="font-bold text-emerald-600">AED 3,000,000</span>
+                    <span className="text-slate-600 font-dm">Sale Price</span>
+                    <span className="font-jakarta font-bold text-emerald-600">AED 3,000,000</span>
                   </div>
                   <div className="flex justify-between items-center pt-2">
-                    <span className="text-lg font-semibold text-slate-900">Profit</span>
+                    <span className="text-lg font-jakarta font-semibold text-slate-900">Profit</span>
                     <div className="text-right">
-                      <div className="text-3xl font-bold text-emerald-600">AED 1,750,000</div>
-                      <div className="text-sm text-emerald-600 font-semibold">115% Return</div>
+                      <div className="text-3xl font-jakarta font-bold text-emerald-600">AED 1,750,000</div>
+                      <div className="text-sm text-emerald-600 font-dm font-semibold">115% Return</div>
                     </div>
                   </div>
                 </div>
@@ -168,13 +221,14 @@ export default function InvestmentHero() {
             </div>
 
             {/* Floating ROI badge with enhanced animation */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-amber-500/50 animate-float group-hover:animate-none transition-all">
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl shadow-amber-500/50 animate-float group-hover:scale-110 transition-all duration-300">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white font-extrabold">30%</div>
-                <div className="text-xs text-white/90 font-semibold">ROI</div>
+                <div className="text-3xl font-jakarta font-bold text-white font-extrabold">30%</div>
+                <div className="text-xs text-white/90 font-dm font-semibold">ROI</div>
               </div>
               {/* Pulsing border effect */}
               <div className="absolute inset-0 rounded-full border-2 border-amber-300 opacity-0 animate-ping" />
+              <div className="absolute inset-0 rounded-full bg-amber-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
           </div>
         </div>

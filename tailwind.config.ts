@@ -112,6 +112,58 @@ const config = {
           "0%, 100%": { boxShadow: "0 0 20px rgba(16, 185, 129, 0.3)" },
           "50%": { boxShadow: "0 0 40px rgba(16, 185, 129, 0.6)" },
         },
+        "slide-up-fade": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(30px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          },
+        },
+        "slide-down-fade": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-30px)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)"
+          },
+        },
+        "scale-up": {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.95)"
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)"
+          },
+        },
+        "bounce-subtle": {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-5px)" },
+        },
+        "rotate-slow": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        "blur-in": {
+          "0%": {
+            opacity: "0",
+            filter: "blur(10px)"
+          },
+          "100%": {
+            opacity: "1",
+            filter: "blur(0)"
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -121,6 +173,18 @@ const config = {
         "float-delayed": "float-delayed 3s ease-in-out infinite 0.5s",
         "shimmer": "shimmer 2s infinite",
         "glow": "glow 2s ease-in-out infinite",
+        "slide-up-fade": "slide-up-fade 0.6s ease-out",
+        "slide-down-fade": "slide-down-fade 0.6s ease-out",
+        "scale-up": "scale-up 0.5s ease-out",
+        "bounce-subtle": "bounce-subtle 2s ease-in-out infinite",
+        "rotate-slow": "rotate-slow 20s linear infinite",
+        "fade-in": "fade-in 0.6s ease-out",
+        "blur-in": "blur-in 0.8s ease-out",
+      },
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        jakarta: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        dm: ['DM Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
     },
   },

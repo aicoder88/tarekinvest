@@ -35,18 +35,24 @@ export default function BeforeAfterSlider({
   };
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+    <section className="py-20 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+      {/* Subtle background decoration */}
+      <div className="absolute inset-0 gradient-mesh opacity-30" />
+
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center mb-12 animate-slide-up-fade">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-100 backdrop-blur-sm rounded-full mb-6 border border-slate-200">
+            <span className="text-sm font-jakarta font-semibold text-slate-700">Before & After</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-jakarta font-bold text-gray-900 mb-4 tracking-tight">
             Dramatic Transformations
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            See how we turn distressed properties into premium investments
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-dm">
+            See how we turn distressed properties into <span className="font-semibold text-emerald-600">premium investments</span>
           </p>
         </div>
 
-        <Card className="max-w-5xl mx-auto overflow-hidden shadow-2xl">
+        <Card className="max-w-5xl mx-auto overflow-hidden shadow-luxury-lg hover:shadow-luxury transition-all duration-500 animate-scale-up" style={{ animationDelay: '0.2s' }}>
           <div
             ref={containerRef}
             className="relative aspect-[16/10] overflow-hidden cursor-col-resize select-none bg-gray-200"
@@ -64,7 +70,7 @@ export default function BeforeAfterSlider({
                 className="w-full h-full object-cover"
                 draggable={false}
               />
-              <div className="absolute top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
+              <div className="absolute top-4 right-4 bg-emerald-500 text-white px-4 py-2 rounded-lg font-jakarta font-semibold shadow-lg shadow-emerald-500/50 animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 After
               </div>
             </div>
@@ -80,31 +86,36 @@ export default function BeforeAfterSlider({
                 className="w-full h-full object-cover"
                 draggable={false}
               />
-              <div className="absolute top-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-lg font-semibold shadow-lg">
+              <div className="absolute top-4 left-4 bg-gray-800 text-white px-4 py-2 rounded-lg font-jakarta font-semibold shadow-lg animate-fade-in" style={{ animationDelay: '0.4s' }}>
                 Before
               </div>
             </div>
 
-            {/* Slider Handle */}
+            {/* Slider Handle - Enhanced */}
             <div
-              className="absolute top-0 bottom-0 w-1 bg-gold shadow-lg transition-none"
+              className="absolute top-0 bottom-0 w-1 bg-gradient-to-b from-emerald-500 via-teal-500 to-emerald-500 shadow-lg shadow-emerald-500/30 transition-none"
               style={{ left: `${sliderPosition}%` }}
               onMouseDown={handleMouseDown}
               onTouchStart={handleMouseDown}
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-xl flex items-center justify-center hover:shadow-2xl transition-shadow">
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-white rounded-full shadow-luxury flex items-center justify-center hover:shadow-luxury-lg hover:scale-110 transition-all duration-300 cursor-grab active:cursor-grabbing border-2 border-emerald-500/20">
                 <div className="flex gap-2">
-                  <div className="w-1 h-6 bg-gold rounded-full" />
-                  <div className="w-1 h-6 bg-gold rounded-full" />
+                  <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full animate-pulse-soft" />
+                  <div className="w-1 h-6 bg-gradient-to-b from-emerald-500 to-teal-500 rounded-full animate-pulse-soft" style={{ animationDelay: '0.2s' }} />
                 </div>
               </div>
             </div>
           </div>
 
           {/* Instructions */}
-          <div className="p-8 bg-white text-center">
-            <p className="text-gray-600 font-medium">
-              👈 Drag to compare • {title} 👉
+          <div className="p-8 bg-gradient-to-br from-slate-50 to-white text-center border-t border-slate-100">
+            <p className="text-gray-600 font-dm font-medium">
+              <span className="inline-flex items-center gap-2">
+                <span className="animate-bounce-subtle">👈</span>
+                <span>Drag to compare</span>
+                <span className="font-jakarta font-bold text-emerald-600 mx-2">{title}</span>
+                <span className="animate-bounce-subtle">👉</span>
+              </span>
             </p>
           </div>
         </Card>
@@ -128,23 +139,23 @@ export default function BeforeAfterSlider({
               label: "Exterior Upgrade"
             }
           ].map((item, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-xl transition-shadow">
+            <Card key={index} className="overflow-hidden shadow-luxury hover:shadow-luxury-lg transition-all duration-500 hover:-translate-y-2 group animate-scale-up" style={{ animationDelay: `${0.3 + index * 0.1}s` }}>
               <div className="grid grid-cols-2">
-                <div className="relative aspect-square">
-                  <img src={item.before} alt="Before" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-2 left-2 bg-gray-800 text-white px-2 py-1 rounded text-xs font-semibold">
+                <div className="relative aspect-square overflow-hidden">
+                  <img src={item.before} alt="Before" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute bottom-2 left-2 bg-gray-800 text-white px-2 py-1 rounded text-xs font-jakarta font-semibold">
                     Before
                   </div>
                 </div>
-                <div className="relative aspect-square">
-                  <img src={item.after} alt="After" className="w-full h-full object-cover" />
-                  <div className="absolute bottom-2 right-2 bg-emerald-500 text-white px-2 py-1 rounded text-xs font-semibold">
+                <div className="relative aspect-square overflow-hidden">
+                  <img src={item.after} alt="After" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute bottom-2 right-2 bg-emerald-500 text-white px-2 py-1 rounded text-xs font-jakarta font-semibold">
                     After
                   </div>
                 </div>
               </div>
-              <div className="p-4 bg-white">
-                <p className="font-semibold text-gray-900 text-center">{item.label}</p>
+              <div className="p-4 bg-gradient-to-br from-slate-50 to-white">
+                <p className="font-jakarta font-semibold text-gray-900 text-center group-hover:text-emerald-600 transition-colors duration-300">{item.label}</p>
               </div>
             </Card>
           ))}
