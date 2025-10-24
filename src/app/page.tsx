@@ -6,6 +6,10 @@ import TrustIndicators from "@/components/trust-indicators";
 import HowItWorks from "@/components/how-it-works";
 import SuccessStory from "@/components/success-story";
 import ROICalculator from "@/components/roi-calculator";
+import InvestmentCategories from "@/components/investment-categories";
+import ClientTestimonials from "@/components/client-testimonials";
+import FAQSection from "@/components/faq-section";
+import FinalCTA from "@/components/final-cta";
 
 export default function Home() {
   return (
@@ -15,8 +19,12 @@ export default function Home() {
       <TrustIndicators />
       <BeforeAfterSlider />
       <HowItWorks />
+      <InvestmentCategories />
+      <ClientTestimonials />
       <SuccessStory />
       <ROICalculator />
+      <FAQSection />
+      <FinalCTA />
       <Footer />
     </div>
   );
