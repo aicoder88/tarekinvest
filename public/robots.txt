@@ -1,0 +1,12 @@
+# TarekInvest - Real Estate Investment Platform
+# https://tarekinvest.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /dashboard/
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://tarekinvest.com/sitemap.xml
